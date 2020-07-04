@@ -1,7 +1,6 @@
 #include <iostream>
 
-#include <glew/glew.h>
-#include <glfw3.h>
+#include "Window/Window.h"
 
 int main()
 {
