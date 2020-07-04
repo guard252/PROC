@@ -12,7 +12,7 @@ protected:
 	virtual void OnUpdate() = 0;
 public: 
 	Application(std::string name);
-	~Application() = default;
+	virtual ~Application() = default;
 
 	void Run();
 	
