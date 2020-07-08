@@ -2,6 +2,8 @@
 
 #include <memory>
 #include "../Window/Window.h"
+#include "../Event/Event.h"
+#include "../Event/WindowsEvent.h"
 
 class Application
 {
@@ -10,6 +12,9 @@ class Application
 	
 protected:
 	virtual void OnUpdate() = 0;
+	void OnEvent(Event& e);
+	bool OnWindowClose(WindowCloseEvent& e);
+
 public: 
 	Application(std::string name);
 	virtual ~Application() = default;
