@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "Application/ProceduralGenerator.h"
+#include "Application/Application.h"
 
 int main()
 {
@@ -40,7 +40,7 @@ int main()
 
     glfwTerminate();
     return 0;*/
-    ProceduralGenerator application;
-    application.Run();
+    Application procedural_generator("Procedural generator");
+    procedural_generator.Run();
    
 }

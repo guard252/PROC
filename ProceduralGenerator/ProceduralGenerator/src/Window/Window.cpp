@@ -19,9 +19,11 @@ void Window::Init()
 		glfwTerminate();
 		throw std::runtime_error("Unable to create window");
 	}
+
 	glfwMakeContextCurrent(m_window);
 	glfwSetWindowUserPointer(m_window, &m_window_data);
 	SetCallbacks();
+
 	GLenum err = glewInit();
 	if (err != GLEW_OK)
 	{
@@ -65,12 +67,6 @@ Window::Window(std::string name)
 {
 	m_window_data.name = name;
 	m_monitor = glfwGetPrimaryMonitor();
-
-	/*const GLFWvidmode* mode = glfwGetVideoMode(m_monitor);
-	glfwWindowHint(GLFW_RED_BITS, mode->redBits);
-	glfwWindowHint(GLFW_GREEN_BITS, mode->greenBits);
-	glfwWindowHint(GLFW_BLUE_BITS, mode->blueBits);
-	glfwWindowHint(GLFW_REFRESH_RATE, mode->refreshRate);*/
 
 	Init();
 }

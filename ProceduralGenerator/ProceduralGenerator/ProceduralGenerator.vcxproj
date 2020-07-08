@@ -171,14 +171,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Application\ProceduralGenerator.cpp" />
     <ClCompile Include="src\Application\Application.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Window\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Event\Event.h" />
-    <ClInclude Include="src\Application\ProceduralGenerator.h" />
     <ClInclude Include="src\Application\Application.h" />
     <ClInclude Include="src\Event\EventDefines.h" />
     <ClInclude Include="src\Event\EventEnums.h" />

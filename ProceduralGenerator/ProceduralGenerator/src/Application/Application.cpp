@@ -1,4 +1,7 @@
 #include "Application.h"
+void Application::OnUpdate()
+{
+}
 void Application::OnEvent(Event& e)
 {
 	EventHandler handler(e);
@@ -13,9 +16,10 @@ Application::Application(std::string name)
 
 void Application::Run()
 {
+	glClearColor(0.2, 0.3, 0.5, 1);
 	while (m_is_running)
 	{
-
+		glClear(GL_COLOR_BUFFER_BIT);
 		m_window->OnUpdate();
 	}
 }
