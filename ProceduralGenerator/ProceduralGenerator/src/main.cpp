@@ -1,10 +1,10 @@
 #include <iostream>
 
-#include "Window/Window.h"
+#include "Application/ProceduralGenerator.h"
 
 int main()
 {
-    GLFWwindow* window;
+    /*GLFWwindow* window;
 
     if (!glfwInit())
         return -1;
@@ -39,5 +39,8 @@ int main()
     }
 
     glfwTerminate();
-    return 0;
+    return 0;*/
+    ProceduralGenerator application;
+    application.Run();
+   
 }
