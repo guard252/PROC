@@ -11,7 +11,7 @@ class Application
 	bool m_is_running = true;
 	
 protected:
-	virtual void OnUpdate() = 0;
+	virtual void OnUpdate();
 	void OnEvent(Event& e);
 	bool OnWindowClose(WindowCloseEvent& e);
 
