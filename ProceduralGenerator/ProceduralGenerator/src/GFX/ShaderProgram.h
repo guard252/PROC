@@ -99,6 +99,76 @@ namespace GFX
 		{
 			GLCall(glUseProgram(0));
 		}
+
+		//Uniforms:
+	private:
+		std::unordered_map<std::string, GLint> m_cached_uniforms;
+	private:
+		GLint GetUniformLocation(std::string_view name)
+		{
+			if (auto pair = m_cached_uniforms.find(name.data()); 
+				pair != m_cached_uniforms.end())
+			{
+				return pair->second;
+			}
+			else
+			{
+				GLCall(GLint location = glGetUniformLocation(m_renderer_ID, name.data()));
+				assert(location != -1);
+				m_cached_uniforms.insert(std::make_pair(name, location));
+				return location;
+			}
+		}
+	public:
+		void SetUniform1f(std::string name, float value)
+		{
+			GLint location = GetUniformLocation(name);
+			GLCall(glUniform1f(location, value));
+		}
+		void SetUniform2f(std::string_view name, glm::fvec2 value)
+		{
+			GLint location = GetUniformLocation(name);
+			GLCall(glUniform2f(location, value.x, value.y));
+		}
+		void SetUniform3f(std::string_view name, glm::fvec3 value)
+		{
+			GLint location = GetUniformLocation(name);
+			GLCall(glUniform3f(location, value.x, value.y, value.z));
+		}
+		void SetUniform4f(std::string_view name, glm::fvec4 value)
+		{
+			GLint location = GetUniformLocation(name);
+			GLCall(glUniform4f(location, value.x, value.y, value.z, value.w));
+		}
+
+		void SetUniform1i(std::string_view name, int value)
+		{
+			GLint location = GetUniformLocation(name);
+			GLCall(glUniform1i(location, value));
+		}
+		void SetUniform2i(std::string_view name, glm::ivec2 value)
+		{
+			GLint location = GetUniformLocation(name);
+			GLCall(glUniform2i(location, value.x, value.y));
+		}
+		void SetUniform3i(std::string_view name, glm::ivec3 value)
+		{
+			GLint location = GetUniformLocation(name);
+			GLCall(glUniform3i(location, value.x, value.y, value.z));
+		}
+		void SetUniform4i(std::string_view name, glm::ivec4 value)
+		{
+			GLint location = GetUniformLocation(name);
+			GLCall(glUniform4i(location, value.x, value.y, value.z, value.w));
+		}
+
+		void SetUniformMatrix4x4(std::string name, glm::mat4 value)
+		{
+			GLint location = GetUniformLocation(name);
+			GLCall(glUniformMatrix4fv(location, value));
+		}
+
+		
 	};
 
 	

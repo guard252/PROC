@@ -15,6 +15,12 @@ Application::Application(std::string name)
 	m_window->SetEventCallback(BIND_EVENT(OnEvent));
 }
 
+bool Application::OnWindowClose(WindowCloseEvent& e)
+{
+	m_is_running = false;
+	return true;
+}
+
 void Application::Run()
 {
 	glClearColor(0.2, 0.3, 0.5, 1);
@@ -33,6 +39,7 @@ void Application::Run()
 
 	GFX::ShaderProgram<GFX::VertexShader, GFX::FragmentShader> program(vert, frag);
 	program.Bind();
+	program.SetUniform4f("u_color", glm::vec4(0, 0, 1, 1));
 	while (m_is_running)
 	{
 		glClear(GL_COLOR_BUFFER_BIT);
@@ -41,8 +48,3 @@ void Application::Run()
 	}
 }
 
-bool Application::OnWindowClose(WindowCloseEvent& e)
-{
-	m_is_running = false;
-	return true;
-}

@@ -5,11 +5,15 @@
 #include <stdexcept>
 #include <fstream>
 #include <xkeycheck.h>
+#include <unordered_map>
 
 
 //Third-party library files
 #include <glew/glew.h>
 #include <glfw3.h>
+
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 //Project files
 #include "GFX/GFXCommon.h"
