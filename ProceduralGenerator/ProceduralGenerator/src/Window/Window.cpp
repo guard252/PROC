@@ -1,6 +1,5 @@
+#include "pch.h"
 #include "Window.h"
-
-#include <stdexcept>
 
 #include "../Event/WindowsEvent.h"
 
@@ -12,7 +11,7 @@ void Window::Init()
 	}
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4);
-
+	
 	m_window = glfwCreateWindow(m_window_data.size.x, m_window_data.size.y, m_window_data.name.c_str(), m_monitor, nullptr);
 	if (!m_window)
 	{
@@ -23,13 +22,15 @@ void Window::Init()
 	glfwMakeContextCurrent(m_window);
 	glfwSetWindowUserPointer(m_window, &m_window_data);
 	SetCallbacks();
-
+	
+	
 	GLenum err = glewInit();
 	if (err != GLEW_OK)
 	{
 		glfwTerminate();
 		throw std::runtime_error("Unable to init GLEW");
 	}
+	EnableDebugOutput();
 }
 
 void Window::Shutdown()
