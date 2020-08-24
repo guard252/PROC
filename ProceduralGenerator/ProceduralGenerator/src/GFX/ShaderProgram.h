@@ -57,7 +57,7 @@ namespace GFX
 
 	
 	template <class T>
-	concept ShaderType = std::is_base_of<T, Shader>;
+	concept ShaderType = std::is_base_of<Shader, T>::value;
 
 	// ShaderProgram allows you to define shader pipeline yourself
 	template <ShaderType ... S>
