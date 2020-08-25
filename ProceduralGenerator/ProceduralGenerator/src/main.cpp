@@ -4,6 +4,7 @@
 
 int main()
 {
+
     Application procedural_generator("Procedural generator");
     procedural_generator.Run();
 }
