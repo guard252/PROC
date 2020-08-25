@@ -1,5 +1,6 @@
 #pragma once
-
+#include "pch.h"
+#include "Logger/Logger.h"
 namespace GFX
 {
 	constexpr inline int INFOLOG_SIZE = 512;
@@ -29,7 +30,7 @@ namespace GFX
 		VertexShader(std::string_view src) : Shader(src) {}
 		virtual std::string Type() const override 
 		{
-			return "VertexShader";
+			return "Vertex Shader";
 		}
 	};
 
@@ -40,7 +41,7 @@ namespace GFX
 		FragmentShader(std::string_view src) : Shader(src) {}
 		virtual std::string Type() const override 
 		{
-			return "FragmentShader";
+			return "Fragment Shader";
 		}
 	};
 	
@@ -51,7 +52,7 @@ namespace GFX
 	public:
 		virtual std::string Type() const override 
 		{
-			return "ComputeShader";
+			return "Compute Shader";
 		}
 	};
 
@@ -87,7 +88,7 @@ namespace GFX
 			if (!success)
 			{
 				GLCall(glGetProgramInfoLog(m_renderer_ID, INFOLOG_SIZE, NULL, info_log));
-				std::cout << "ERROR::SHADER::PROGRAM::LINKING_FAILED\n" << info_log << std::endl;
+				LOGE("Program linking error. Info log:\n{}", info_log);
 			}
 		}
 

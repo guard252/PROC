@@ -7,7 +7,7 @@ void Window::Init()
 {
 	if (!glfwInit())
 	{
-		throw std::runtime_error("Unable to initialize glfw context");
+		LOGE("Unable to initialize glfw context")
 	}
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4);
@@ -16,26 +16,26 @@ void Window::Init()
 	if (!m_window)
 	{
 		glfwTerminate();
-		throw std::runtime_error("Unable to create window");
+		LOGE("Unable to create window");
 	}
 
 	glfwMakeContextCurrent(m_window);
 	glfwSetWindowUserPointer(m_window, &m_window_data);
 	SetCallbacks();
 	
-	
 	GLenum err = glewInit();
 	if (err != GLEW_OK)
 	{
 		glfwTerminate();
-		throw std::runtime_error("Unable to init GLEW");
+		LOGE("Unable to init GLEW");
 	}
-	EnableDebugOutput();
+	LOGI("Application started");
 }
 
 void Window::Shutdown()
 {
 	glfwDestroyWindow(m_window);
+	LOGI("Application terminated");
 }
 
 void Window::SetCallbacks()

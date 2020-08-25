@@ -48,5 +48,6 @@ void Application::Run()
 		GLCall(glDrawArrays(GL_TRIANGLES, 0, 3));
 		m_window->OnUpdate();
 	}
+
 }
 

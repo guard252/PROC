@@ -22,3 +22,5 @@
 #include "GFX/VertexArray.h"
 #include "GFX/VertexBuffer.h"
 #include "GFX/ShaderProgram.h"
+
+#include "Logger/Logger.h"

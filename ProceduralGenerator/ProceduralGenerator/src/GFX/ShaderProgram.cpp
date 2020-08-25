@@ -30,7 +30,7 @@ namespace GFX
 		if (!success)
 		{
 			glGetShaderInfoLog(m_ID, INFOLOG_SIZE, NULL, info_log);
-			std::cout << "ERROR::SHADER::" << Type() << "::COMPILATION_FAILED\n" << info_log << std::endl;
+			LOGE("Error in {}. Compilation failed. Info log:\n{}", Type(), info_log);
 		};
 	}
 	void VertexShader::GenerateShaderID(std::string_view src)
