@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "Window.h"
 
-#include "../Event/WindowsEvent.h"
 
 void Window::Init()
 {
@@ -44,7 +43,18 @@ void Window::SetCallbacks()
 		WindowMainData& data = *(WindowMainData*)glfwGetWindowUserPointer(window);
 		WindowCloseEvent event;
 		data.callback(event);
-		});
+	});
+
+	glfwSetCursorPosCallback(m_window, [](GLFWwindow* window, double xPos, double yPos)
+	{
+			WindowMainData& data = *(WindowMainData*)glfwGetWindowUserPointer(window);
+			MouseMoveEvent event((float)xPos, (float)yPos);
+			data.callback(event);
+	});
+
+	glfwSetMouseButtonCallback(m_window, [](GLFWwindow* window, int button, int action, int mods)
+	{
+	});
 }
 
 void Window::OnUpdate()

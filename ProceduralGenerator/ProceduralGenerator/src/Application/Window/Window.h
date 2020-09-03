@@ -28,7 +28,7 @@ private:
     void SetCallbacks();
 public:
     Window(uint32_t width, uint32_t height, std::string name);
-    Window(std::string name); // Fullscreen window 
+    Window(std::string name);
     ~Window();
     
     virtual void OnUpdate();

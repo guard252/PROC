@@ -6,7 +6,7 @@
 #include <fstream>
 #include <xkeycheck.h>
 #include <unordered_map>
-
+#include <cassert>
 
 //Third-party library files
 #include <glew/glew.h>
@@ -17,10 +17,15 @@
 
 
 //Project files
-#include "GFX/GFXCommon.h"
 #include "Debug/GLDebug.h"
-#include "GFX/VertexArray.h"
-#include "GFX/VertexBuffer.h"
-#include "GFX/ShaderProgram.h"
+#include "GFXPrimitives/GFXCommon.h"
+#include "GFXPrimitives/VertexArray.h"
+#include "GFXPrimitives/VertexBuffer.h"
+#include "GFXPrimitives/ShaderProgram.h"
 
 #include "Logger/Logger.h"
+
+#include "Application/Event/MouseEvent.h"
+#include "Application/Event/WindowsEvent.h"
+#include "Application/Layer/Layer.h"
+#include "Application/Layer/LayerStack.h"

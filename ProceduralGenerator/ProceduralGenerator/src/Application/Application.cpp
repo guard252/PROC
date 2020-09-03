@@ -7,6 +7,12 @@ void Application::OnEvent(Event& e)
 {
 	EventHandler handler(e);
 	handler.Handle<WindowCloseEvent>(BIND_EVENT(OnWindowClose));
+
+	for (auto it = m_layer_stack.end(); it != m_layer_stack.begin();)
+	{
+		(*--it)->OnEvent(e);
+		if (e.m_is_handled) break;
+	}
 }
 
 Application::Application(std::string name)
@@ -18,9 +24,20 @@ Application::Application(std::string name)
 bool Application::OnWindowClose(WindowCloseEvent& e)
 {
 	m_is_running = false;
+	LOGI("Window closed.");
 	return true;
 }
 
+
+void Application::PushLayer(Layer* l)
+{
+	m_layer_stack.PushLayer(l);
+}
+
+void Application::PushOverlay(Layer* l)
+{
+	m_layer_stack.PushOverlay(l);
+}
 
 void Application::Run()
 {
@@ -46,6 +63,13 @@ void Application::Run()
 	{
 		glClear(GL_COLOR_BUFFER_BIT);
 		GLCall(glDrawArrays(GL_TRIANGLES, 0, 3));
+
+		for (Layer* layer : m_layer_stack)
+		{
+			layer->OnUpdate();
+		}
+
+
 		m_window->OnUpdate();
 	}
 
