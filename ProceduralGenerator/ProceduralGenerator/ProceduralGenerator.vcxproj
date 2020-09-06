@@ -171,10 +171,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Application\GUI\GUILayer.cpp" />
     <ClCompile Include="src\Application\Layer\LayerStack.cpp" />
     <ClCompile Include="src\GFXPrimitives\ShaderProgram.cpp" />
     <ClCompile Include="src\Application\Application.cpp" />
     <ClCompile Include="src\GFXPrimitives\VertexArray.cpp" />
+    <ClCompile Include="src\imgui\imgui\imgui.cpp" />
+    <ClCompile Include="src\imgui\imgui\imgui_demo.cpp" />
+    <ClCompile Include="src\imgui\imgui\imgui_draw.cpp" />
+    <ClCompile Include="src\imgui\imgui\imgui_widgets.cpp" />
     <ClCompile Include="src\Logger\Logger.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\pch.cpp">
@@ -189,8 +194,11 @@
     </ClCompile>
     <ClCompile Include="src\Application\Window\Window.cpp" />
     <ClCompile Include="src\GFXPrimitives\VertexBuffer.cpp" />
+    <ClCompile Include="src\imgui\imgui_impl_glfw.cpp" />
+    <ClCompile Include="src\imgui\imgui_impl_opengl3.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Application\GUI\GUILayer.h" />
     <ClInclude Include="src\Application\Layer\LayerStack.h" />
     <ClInclude Include="src\Application\Layer\Layer.h" />
     <ClInclude Include="src\Application\Event\MouseEvent.h" />
@@ -203,6 +211,14 @@
     <ClInclude Include="src\Debug\GLDebug.h" />
     <ClInclude Include="src\GFXPrimitives\VertexArray.h" />
     <ClInclude Include="src\GFXPrimitives\VertexLayout.h" />
+    <ClInclude Include="src\imgui\imgui\imconfig.h" />
+    <ClInclude Include="src\imgui\imgui\imgui.h" />
+    <ClInclude Include="src\imgui\imgui\imgui_internal.h" />
+    <ClInclude Include="src\imgui\imgui\imstb_rectpack.h" />
+    <ClInclude Include="src\imgui\imgui\imstb_textedit.h" />
+    <ClInclude Include="src\imgui\imgui\imstb_truetype.h" />
+    <ClInclude Include="src\imgui\imgui_impl_glfw.h" />
+    <ClInclude Include="src\imgui\imgui_impl_opengl3.h" />
     <ClInclude Include="src\Logger\Logger.h" />
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\Application\Window\Window.h" />

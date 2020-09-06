@@ -42,5 +42,7 @@ public:
     uint32_t GetHeight() const { return m_window_data.size.y; }
     std::string GetName() const { return m_window_data.name; }
 
+    GLFWwindow* GetRawWindow() const { return m_window; }
+
 };
 

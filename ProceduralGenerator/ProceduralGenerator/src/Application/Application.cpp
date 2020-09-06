@@ -7,7 +7,6 @@ void Application::OnEvent(Event& e)
 {
 	EventHandler handler(e);
 	handler.Handle<WindowCloseEvent>(BIND_EVENT(OnWindowClose));
-
 	for (auto it = m_layer_stack.end(); it != m_layer_stack.begin();)
 	{
 		(*--it)->OnEvent(e);
@@ -17,8 +16,9 @@ void Application::OnEvent(Event& e)
 
 Application::Application(std::string name)
 {
-	m_window = std::unique_ptr<Window>(Window::Create(name));
+	m_window = Window::Create(name);
 	m_window->SetEventCallback(BIND_EVENT(OnEvent));
+	LOGI("Application started");
 }
 
 bool Application::OnWindowClose(WindowCloseEvent& e)
@@ -32,11 +32,13 @@ bool Application::OnWindowClose(WindowCloseEvent& e)
 void Application::PushLayer(Layer* l)
 {
 	m_layer_stack.PushLayer(l);
+	l->OnAttach();
 }
 
 void Application::PushOverlay(Layer* l)
 {
 	m_layer_stack.PushOverlay(l);
+	l->OnAttach();
 }
 
 void Application::Run()

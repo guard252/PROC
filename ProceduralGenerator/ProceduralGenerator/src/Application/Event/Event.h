@@ -7,7 +7,7 @@
 class Event
 {
 public:
-	bool m_is_handled;
+	bool m_is_handled{ false };
 
 	virtual EventType GetEventType() const = 0;
 	virtual const char* GetName() const = 0;

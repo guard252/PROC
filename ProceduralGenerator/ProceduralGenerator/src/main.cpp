@@ -1,17 +1,15 @@
 #include <iostream>
 
 #include "Application/Application.h"
+#include "Application/GUI/GUILayer.h"
 #include "Logger/Logger.h"
-class Test : public Layer
-{
-    void OnUpdate() override { LOGT("TEST"); }
-};
+
 
 int main()
 {
-    Logger::Init();
-
-    Application procedural_generator("Procedural generator");
-    procedural_generator.PushLayer(new Test);
+    Logger::Init("Test");
+    Application& procedural_generator = Application::Get();
+    procedural_generator.PushLayer(new GUILayer);
     procedural_generator.Run();
+
 }
