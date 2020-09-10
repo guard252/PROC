@@ -22,6 +22,7 @@ void GUILayer::OnEvent(Event& e)
 
 void GUILayer::OnGUIRender()
 {
+	ImGui::ShowDemoWindow();
 }
 
 void GUILayer::Begin()
