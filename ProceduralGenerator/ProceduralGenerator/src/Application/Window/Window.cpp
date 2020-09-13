@@ -17,10 +17,12 @@ void Window::Init()
 		glfwTerminate();
 		LOGE("Unable to create window");
 	}
+	
 
 	glfwMakeContextCurrent(m_window);
 	glfwSetWindowUserPointer(m_window, &m_window_data);
 	SetCallbacks();
+	LOGI("Window opened");
 
 	GLenum err = glewInit();
 	if (err != GLEW_OK)
@@ -32,8 +34,8 @@ void Window::Init()
 
 void Window::Shutdown()
 {
+	LOGI("Window closed");
 	glfwDestroyWindow(m_window);
-	LOGI("Application terminated");
 }
 
 void Window::SetCallbacks()
@@ -72,7 +74,6 @@ void Window::SetCallbacks()
 			double x, y;
 			glfwGetCursorPos(window, &x, &y);
 			MouseClickEvent e(x, y, click_type);
-			LOGI(e.ToString());
 			data.callback(e);
 
 
@@ -85,19 +86,19 @@ void Window::OnUpdate()
 	glfwSwapBuffers(m_window);
 }
 
-Window* Window::Create(std::string name)
+Window* Window::Create(const std::string_view name)
 {
 	return new Window(name);
 }
 
-Window::Window(uint32_t width, uint32_t height, std::string name) :
-	m_window_data{ {width, height}, name }
+Window::Window(uint32_t width, uint32_t height, const std::string_view name) :
+	m_window_data{ {width, height}, name.data() }
 {
 	Init();
 
 }
 
-Window::Window(std::string name)
+Window::Window(const std::string_view name)
 {
 	m_window_data.name = name;
 	m_monitor = glfwGetPrimaryMonitor();

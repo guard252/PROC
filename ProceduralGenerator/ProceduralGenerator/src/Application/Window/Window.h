@@ -27,13 +27,13 @@ private:
     void Shutdown();
     void SetCallbacks();
 public:
-    Window(uint32_t width, uint32_t height, std::string name);
-    Window(std::string name);
+    Window(uint32_t width, uint32_t height, const std::string_view name);
+    Window(const std::string_view name);
     ~Window();
     
     virtual void OnUpdate();
     
-    static Window* Create(std::string name);
+    static Window* Create(const std::string_view name);
 
     void SetEventCallback(const EventCallback& callback) { m_window_data.callback = callback; }
 

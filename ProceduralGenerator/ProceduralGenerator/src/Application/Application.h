@@ -15,10 +15,10 @@ protected:
 	LayerStack m_layer_stack;
 	void OnEvent(Event& e);
 	bool OnWindowClose(WindowCloseEvent& e);
-
+	void OnTerminate();
 public: 
-	Application(std::string name);
-	virtual ~Application() {}
+	Application(const std::string_view name);
+	virtual ~Application();
 	void PushLayer(Layer* l);
 	void PushOverlay(Layer* l);
 

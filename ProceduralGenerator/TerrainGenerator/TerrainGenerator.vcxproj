@@ -177,6 +177,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\ProceduralGenerator.cpp" />
+    <ClCompile Include="TerrainGenerationAlgorithm.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TerrainGenerationAlgorithm.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
