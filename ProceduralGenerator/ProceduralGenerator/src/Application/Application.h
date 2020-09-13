@@ -25,7 +25,7 @@ public:
 	virtual void Run();
 
 	static Application& Get();
-	
+	static Application* s_instance;
 
 	Window* GetWindow() const { return m_window; }
 

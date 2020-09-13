@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "Application.h"
 
+Application* Application::s_instance = nullptr;
+
 void Application::OnEvent(Event& e)
 {
 	EventHandler handler(e);
@@ -17,6 +19,7 @@ Application::Application(std::string name)
 	m_window = Window::Create(name);
 	m_window->SetEventCallback(BIND_EVENT(OnEvent));
 	LOGI("Application started");
+	s_instance = this;
 }
 
 bool Application::OnWindowClose(WindowCloseEvent& e)
@@ -41,8 +44,7 @@ void Application::PushOverlay(Layer* l)
 
 Application& Application::Get()
 {
-	static Application instance("app");
-	return instance;
+	return *s_instance;
 }
 
 void Application::Run()
