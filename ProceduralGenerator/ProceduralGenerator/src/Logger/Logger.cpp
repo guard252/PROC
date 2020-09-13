@@ -3,7 +3,7 @@
 
 std::shared_ptr<spdlog::logger> Logger::s_logger;
 
-void Logger::Init(std::string name)
+void Logger::Init(const std::string& name)
 {
 	s_logger = spdlog::stdout_color_mt(name);
 	spdlog::set_pattern("%^[%T] %n: %v%$");

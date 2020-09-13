@@ -3,7 +3,7 @@
 #include "VertexLayout.h"
 namespace GFX
 {
-	class VertexArray : public IBindable
+	class PROC_API VertexArray : public IBindable
 	{
 		GLuint m_renderer_ID;
 	public:

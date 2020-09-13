@@ -20,34 +20,33 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{370afb7a-9893-45bf-a186-3a6ed1a1679e}</ProjectGuid>
+    <ProjectGuid>{9774ddfb-d431-4cd7-8958-3925ef11fd43}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>ProceduralGenerator</RootNamespace>
+    <RootNamespace>TerrainGenerator</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>PROC_engine</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -97,10 +96,10 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>EXPORT;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions); GLEW_STATIC</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLEW_DYNAMIC;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions); GLEW_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)vendor\includes\;D:\dev\procedural_generation\ProceduralGenerator\ProceduralGenerator\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)vendor\includes\;$(SolutionDir)ProceduralGenerator\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -115,15 +114,15 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>GLEW_BUILD;EXPORT;_DEBUG;_CONSOLE;%(PreprocessorDefinitions); GLEW_STATIC</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLEW_BUILD;_DEBUG;_CONSOLE;%(PreprocessorDefinitions); GLEW_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)vendor\includes\;D:\dev\procedural_generation\ProceduralGenerator\ProceduralGenerator\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)vendor\includes\;$(SolutionDir)ProceduralGenerator\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)vendor\libraries\x64</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)vendor\libraries\x64;D:\dev\procedural_generation\ProceduralGenerator\bin\x64\Debug</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -135,10 +134,10 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>EXPORT;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions); GLEW_STATIC</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLEW_DYNAMIC;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions); GLEW_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)vendor\includes\;D:\dev\procedural_generation\ProceduralGenerator\ProceduralGenerator\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)vendor\includes\;$(SolutionDir)ProceduralGenerator\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -157,83 +156,27 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>GLEW_BUILD;EXPORT;NDEBUG;_CONSOLE;%(PreprocessorDefinitions); GLEW_STATIC</PreprocessorDefinitions>
+      <PreprocessorDefinitions>GLEW_BUILD;NDEBUG;_CONSOLE;%(PreprocessorDefinitions); GLEW_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)vendor\includes\;D:\dev\procedural_generation\ProceduralGenerator\ProceduralGenerator\src</AdditionalIncludeDirectories>
-      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalIncludeDirectories>$(SolutionDir)vendor\includes\;$(SolutionDir)ProceduralGenerator\src</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)vendor\libraries\x64</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)vendor\libraries\x64;D:\dev\procedural_generation\ProceduralGenerator\bin\x64\Debug</AdditionalLibraryDirectories>
       <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Application\GUI\GUILayer.cpp" />
-    <ClCompile Include="src\Application\GUI\GUIParameter.cpp" />
-    <ClCompile Include="src\Application\GUI\GUIParameterSet.cpp" />
-    <ClCompile Include="src\Application\Layer\LayerStack.cpp" />
-    <ClCompile Include="src\GFXPrimitives\ShaderProgram.cpp" />
-    <ClCompile Include="src\Application\Application.cpp" />
-    <ClCompile Include="src\GFXPrimitives\VertexArray.cpp" />
-    <ClCompile Include="src\imgui\imgui\imgui.cpp" />
-    <ClCompile Include="src\imgui\imgui\imgui_demo.cpp" />
-    <ClCompile Include="src\imgui\imgui\imgui_draw.cpp" />
-    <ClCompile Include="src\imgui\imgui\imgui_widgets.cpp" />
-    <ClCompile Include="src\Logger\Logger.cpp" />
-    <ClCompile Include="src\pch.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">pch.h</PrecompiledHeaderFile>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">pch.h</PrecompiledHeaderFile>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">pch.h</PrecompiledHeaderFile>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">pch.h</PrecompiledHeaderFile>
-    </ClCompile>
-    <ClCompile Include="src\Application\Window\Window.cpp" />
-    <ClCompile Include="src\GFXPrimitives\VertexBuffer.cpp" />
-    <ClCompile Include="src\imgui\imgui_impl_glfw.cpp" />
-    <ClCompile Include="src\imgui\imgui_impl_opengl3.cpp" />
+    <ProjectReference Include="..\ProceduralGenerator\ProceduralGenerator.vcxproj">
+      <Project>{370afb7a-9893-45bf-a186-3a6ed1a1679e}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\DLLHeader.h" />
-    <ClInclude Include="src\Application\GUI\GUIParameter.h" />
-    <ClInclude Include="src\Application\GUI\GUIParameterSet.h" />
-    <ClInclude Include="src\Application\GUI\GUILayer.h" />
-    <ClInclude Include="src\Application\Layer\LayerStack.h" />
-    <ClInclude Include="src\Application\Layer\Layer.h" />
-    <ClInclude Include="src\Application\Event\MouseEvent.h" />
-    <ClInclude Include="src\GFXPrimitives\GFXCommon.h" />
-    <ClInclude Include="src\GFXPrimitives\ShaderProgram.h" />
-    <ClInclude Include="src\Application\Event\Event.h" />
-    <ClInclude Include="src\Application\Application.h" />
-    <ClInclude Include="src\Application\Event\EventDefines.h" />
-    <ClInclude Include="src\Application\Event\EventEnums.h" />
-    <ClInclude Include="src\Debug\GLDebug.h" />
-    <ClInclude Include="src\GFXPrimitives\VertexArray.h" />
-    <ClInclude Include="src\GFXPrimitives\VertexLayout.h" />
-    <ClInclude Include="src\imgui\imgui\imconfig.h" />
-    <ClInclude Include="src\imgui\imgui\imgui.h" />
-    <ClInclude Include="src\imgui\imgui\imgui_internal.h" />
-    <ClInclude Include="src\imgui\imgui\imstb_rectpack.h" />
-    <ClInclude Include="src\imgui\imgui\imstb_textedit.h" />
-    <ClInclude Include="src\imgui\imgui\imstb_truetype.h" />
-    <ClInclude Include="src\imgui\imgui_impl_glfw.h" />
-    <ClInclude Include="src\imgui\imgui_impl_opengl3.h" />
-    <ClInclude Include="src\Logger\Logger.h" />
-    <ClInclude Include="src\pch.h" />
-    <ClInclude Include="src\Application\Window\Window.h" />
-    <ClInclude Include="src\Application\Event\WindowsEvent.h" />
-    <ClInclude Include="src\GFXPrimitives\VertexBuffer.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\shaders\fragment.glsl" />
-    <None Include="src\shaders\vertex.glsl" />
+    <ClCompile Include="src\ProceduralGenerator.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

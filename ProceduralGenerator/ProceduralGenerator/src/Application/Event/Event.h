@@ -38,9 +38,4 @@ public:
 	}
 };
 
-inline std::ostream& operator<<(std::ostream& os, const Event& e)
-{
-	os << e.ToString();
-	return os;
-}
 

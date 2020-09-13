@@ -1,8 +1,8 @@
 #pragma once
-
+#include "DLLHeader.h"
 namespace GFX
 {
-	class IBindable
+	class PROC_API IBindable
 	{
 	public:
 		virtual void Bind() const = 0;

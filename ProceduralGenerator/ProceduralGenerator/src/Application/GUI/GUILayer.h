@@ -1,6 +1,7 @@
 #pragma once
 #include "Application/Layer/Layer.h"
-class GUILayer : public Layer
+#include "DLLHeader.h"
+class PROC_API GUILayer : public Layer
 {
 public:
 	GUILayer();
@@ -12,5 +13,6 @@ public:
 	virtual void OnGUIRender();
 	void Begin() ;
 	void End();
+	~GUILayer() {}
 };
 

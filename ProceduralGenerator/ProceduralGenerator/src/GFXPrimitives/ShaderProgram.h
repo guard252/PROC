@@ -1,11 +1,14 @@
 #pragma once
 #include "pch.h"
 #include "Logger/Logger.h"
+#include "DLLHeader.h"
+#include <string>
+
 namespace GFX
 {
 	constexpr inline int INFOLOG_SIZE = 512;
 
-	class Shader
+	class PROC_API Shader
 	{
 	protected:
 		GLuint m_ID;
@@ -23,7 +26,7 @@ namespace GFX
 		virtual void CreateShader();
 	};
 	
-	class VertexShader final : public Shader
+	class PROC_API VertexShader final : public Shader
 	{
 		virtual void GenerateShaderID(std::string_view src) override;
 	public:
@@ -34,7 +37,7 @@ namespace GFX
 		}
 	};
 
-	class FragmentShader final : public Shader
+	class PROC_API FragmentShader final : public Shader
 	{
 		virtual void GenerateShaderID(std::string_view src) override;
 	public:
@@ -45,7 +48,7 @@ namespace GFX
 		}
 	};
 	
-	class ComputeShader final : public Shader
+	class PROC_API ComputeShader final : public Shader
 	{
 		virtual void GenerateShaderID(std::string_view src) override;
 		ComputeShader(std::string_view src) : Shader(src) {}

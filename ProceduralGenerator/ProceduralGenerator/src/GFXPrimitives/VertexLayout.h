@@ -2,10 +2,10 @@
 #include <cassert> 
 #include <vector>
 #include <glew/glew.h>
-
+#include "DLLHeader.h"
 namespace GFX
 {
-    struct LayoutElement {
+    struct PROC_API LayoutElement {
         GLuint count;
         GLuint type;
         GLuint normalized;
@@ -28,7 +28,7 @@ namespace GFX
 
     };
 
-    class VertexLayout {
+    class PROC_API VertexLayout {
     private:
         std::vector<LayoutElement> elements;
         GLuint stride{ 0 };

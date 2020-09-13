@@ -1,7 +1,7 @@
 #pragma once
 namespace GFX
 {
-	class VertexBuffer : public IBindable
+	class PROC_API VertexBuffer : public IBindable
 	{
 	private:
 		GLuint m_renderer_ID;

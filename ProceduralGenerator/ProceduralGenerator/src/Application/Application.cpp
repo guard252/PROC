@@ -1,8 +1,6 @@
 #include "pch.h"
 #include "Application.h"
-void Application::OnUpdate()
-{
-}
+
 void Application::OnEvent(Event& e)
 {
 	EventHandler handler(e);
@@ -41,6 +39,12 @@ void Application::PushOverlay(Layer* l)
 	l->OnAttach();
 }
 
+Application& Application::Get()
+{
+	static Application instance("app");
+	return instance;
+}
+
 void Application::Run()
 {
 	glClearColor(0.2, 0.3, 0.5, 1);
@@ -52,8 +56,8 @@ void Application::Run()
 	GFX::VertexLayout layout;
 	layout.Push<float>(2);
 	vao.AddBuffer(buff, layout);
-	GFX::VertexShader vert("shaders/vertex.glsl");
-	GFX::FragmentShader frag("shaders/fragment.glsl");
+	GFX::VertexShader vert("src/shaders/vertex.glsl");
+	GFX::FragmentShader frag("src/shaders/fragment.glsl");
 	vert.CreateShader();
 	frag.CreateShader();
 
@@ -74,6 +78,7 @@ void Application::Run()
 
 		m_window->OnUpdate();
 	}
-
 }
+
+
 
