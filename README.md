@@ -1,2 +1,2 @@
-# Procedural generation
-This is an implementation of various procedural generation algorithms.
+# PROC
+Mini-engine for various algorithms I'm going to implement.
