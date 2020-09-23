@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PROC_engine", "ProceduralGenerator\ProceduralGenerator.vcxproj", "{370AFB7A-9893-45BF-A186-3A6ED1A1679E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TerrainGenerator", "TerrainGenerator\TerrainGenerator.vcxproj", "{9774DDFB-D431-4CD7-8958-3925EF11FD43}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -23,14 +21,6 @@ Global
 		{370AFB7A-9893-45BF-A186-3A6ED1A1679E}.Release|x64.Build.0 = Release|x64
 		{370AFB7A-9893-45BF-A186-3A6ED1A1679E}.Release|x86.ActiveCfg = Release|Win32
 		{370AFB7A-9893-45BF-A186-3A6ED1A1679E}.Release|x86.Build.0 = Release|Win32
-		{9774DDFB-D431-4CD7-8958-3925EF11FD43}.Debug|x64.ActiveCfg = Debug|x64
-		{9774DDFB-D431-4CD7-8958-3925EF11FD43}.Debug|x64.Build.0 = Debug|x64
-		{9774DDFB-D431-4CD7-8958-3925EF11FD43}.Debug|x86.ActiveCfg = Debug|Win32
-		{9774DDFB-D431-4CD7-8958-3925EF11FD43}.Debug|x86.Build.0 = Debug|Win32
-		{9774DDFB-D431-4CD7-8958-3925EF11FD43}.Release|x64.ActiveCfg = Release|x64
-		{9774DDFB-D431-4CD7-8958-3925EF11FD43}.Release|x64.Build.0 = Release|x64
-		{9774DDFB-D431-4CD7-8958-3925EF11FD43}.Release|x86.ActiveCfg = Release|Win32
-		{9774DDFB-D431-4CD7-8958-3925EF11FD43}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

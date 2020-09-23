@@ -11,7 +11,6 @@
 //Third-party library files
 #include <glew/glew.h>
 #include <glfw3.h>
-
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
