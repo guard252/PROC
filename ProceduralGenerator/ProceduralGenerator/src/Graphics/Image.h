@@ -1,15 +1,13 @@
 #pragma once
 #include <memory>
-#include <type_traits>
 #include <glm/glm.hpp>
 
-template<typename T>
-concept Fundamental = std::is_fundamental_v<T>;
+#include "Concepts.h"
 
-template<Fundamental T, size_t channel_size>
-glm::vec<channel_size, T, glm::defaultp> GetPixel(const std::unique_ptr<T[]> data, glm::uvec2 size, glm::uvec2 pos);
+template<Fundamental T, size_t channel_count>
+[[nodiscard]] constexpr glm::vec<channel_count, T, glm::defaultp> GetPixel(const std::unique_ptr<T[]> data, glm::uvec2 size, glm::uvec2 pos) noexcept;
 
-template<Fundamental T, size_t channel_size>
+template<Fundamental T, size_t channel_count>
 class Image
 {
 	glm::uvec2 m_size{ 0, 0 };
@@ -33,7 +31,7 @@ public:
 		m_raw_data = std::make_unique<T[]>(size.x * size.y);
 		if (create_black)
 		{
-			std::fill(std::begin(m_raw_data), std::end(m_raw_data), 0);
+			std::fill(m_raw_data.get(), m_raw_data.get() + size.x * size.y * channel_count, 0);
 		}
 	}
 
@@ -50,31 +48,58 @@ public:
 	Image(const Image& other) : m_size{ other.m_size }
 	{
 		m_raw_data = std::make_unique<T[]>(m_size.x * m_size.y);
-		std::copy(std::begin(other.m_raw_data), std::end(other.m_raw_data), m_raw_data);
+		std::copy(other.m_raw_data.get(), other.m_raw_data.get() + m_size.x * m_size.y * channel_count, m_raw_data.get());
 	}
 
 	Image(Image&& other) : m_size{ other.m_size }, m_raw_data{ std::move(other.m_raw_data) } {	}
 
-	glm::vec<channel_size, T, glm::defaultp> At(glm::uvec2 pos) const
+	[[nodiscard]] constexpr glm::vec<channel_count, T, glm::defaultp> At(glm::uvec2 pos) const noexcept
 	{
 		return GetPixel(m_raw_data, m_size, pos);
 	}
+
+	[[nodiscard]] constexpr glm::vec<channel_count, T, glm::defaultp> At(size_t x, size_t y) const noexcept
+	{
+		return GetPixel(m_raw_data, m_size, { x, y });
+	}
+
+	[[nodiscard]] constexpr glm::uvec2 GetSize() const noexcept 
+	{
+		return m_size;
+	}
 	
+	[[nodiscard]] constexpr size_t GetWidth() const noexcept
+	{
+		return m_size.x;
+	}
+
+	[[nodiscard]] constexpr size_t GetHeight() const noexcept
+	{
+		return m_size.y;
+	}
+
+	[[nodiscard]] constexpr const std::unique_ptr<T[]>& GetRawData() const noexcept
+	{
+		return m_raw_data;
+	}
+
 };
 
 
 
 template<Fundamental T>
-glm::vec<1, T, glm::defaultp> GetPixel(const std::unique_ptr<T[]> data, glm::uvec2 size, glm::uvec2 pos)
+constexpr glm::vec<1, T, glm::defaultp> GetPixel(const std::unique_ptr<T[]> data, glm::uvec2 size, glm::uvec2 pos)
 {
+	assert(pos.x < size.x&& pos.y < size.y);
 	glm::vec<1, T, glm::defaultp> res;
 	res.r = data.get() + pos.y * size.x + pos.x;
 	return res;
 }
 
 template<Fundamental T>
-glm::vec<2, T, glm::defaultp> GetPixel(const std::unique_ptr<T[]> data, glm::uvec2 size, glm::uvec2 pos)
+constexpr glm::vec<2, T, glm::defaultp> GetPixel(const std::unique_ptr<T[]> data, glm::uvec2 size, glm::uvec2 pos)
 {
+	assert(pos.x < size.x&& pos.y < size.y);
 	glm::vec<2, T, glm::defaultp> res;
 	res.r = data.get() + pos.y * size.x * 2 + pos.x * 2;
 	res.g = data.get() + pos.y * size.x * 2 + pos.x  * 2 + 1;
@@ -82,8 +107,9 @@ glm::vec<2, T, glm::defaultp> GetPixel(const std::unique_ptr<T[]> data, glm::uve
 }
 
 template<Fundamental T>
-glm::vec<3, T, glm::defaultp> GetPixel(const std::unique_ptr<T[]> data, glm::uvec2 size, glm::uvec2 pos)
+constexpr glm::vec<3, T, glm::defaultp> GetPixel(const std::unique_ptr<T[]> data, glm::uvec2 size, glm::uvec2 pos)
 {
+	assert(pos.x < size.x&& pos.y < size.y);
 	glm::vec<3, T, glm::defaultp> res;
 	res.r = data.get() + pos.y * size.x * 3 + pos.x * 3;
 	res.g = data.get() + pos.y * size.x * 3 + pos.x * 3 + 1;
@@ -92,8 +118,9 @@ glm::vec<3, T, glm::defaultp> GetPixel(const std::unique_ptr<T[]> data, glm::uve
 }
 
 template<Fundamental T>
-glm::vec<4, T, glm::defaultp> GetPixel(const std::unique_ptr<T[]> data, glm::uvec2 size, glm::uvec2 pos)
+constexpr glm::vec<4, T, glm::defaultp> GetPixel(const std::unique_ptr<T[]> data, glm::uvec2 size, glm::uvec2 pos)
 {
+	assert(pos.x < size.x&& pos.y < size.y);
 	glm::vec<4, T, glm::defaultp> res;
 	res.r = data.get() + pos.y * size.x * 4 + pos.x * 4;
 	res.g = data.get() + pos.y * size.x * 4 + pos.x * 4 + 1;

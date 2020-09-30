@@ -2,10 +2,9 @@
 #include <string>
 #include <functional>
 
+#include <glm/glm.hpp>
 #include <glew/glew.h>
 #include <glfw3.h>
-#include <glm/glm.hpp>
-
 #include "../Event/Event.h"
 
 class Window

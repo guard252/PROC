@@ -1,8 +1,7 @@
 #pragma once
 #include "../Event/Event.h"
-#include "DLLHeader.h"
 #include <string>
-class PROC_API Layer
+class Layer
 {
 	std::string m_name;
 public:

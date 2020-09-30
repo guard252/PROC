@@ -5,9 +5,8 @@
 #include "Event/Event.h"
 #include "Event/WindowsEvent.h"
 #include "Layer/LayerStack.h"
-#include "DLLHeader.h"
 
-class PROC_API Application
+class Application
 {
 protected:
 	Window* m_window;

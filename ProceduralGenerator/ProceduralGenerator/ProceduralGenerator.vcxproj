@@ -113,13 +113,13 @@
     <ClCompile>
       <PrecompiledHeader>
       </PrecompiledHeader>
-      <WarningLevel>EnableAllWarnings</WarningLevel>
+      <WarningLevel>Level2</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>GLEW_BUILD;EXPORT;_DEBUG;_CONSOLE;%(PreprocessorDefinitions); GLEW_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <AdditionalIncludeDirectories>$(ProjectDir)vendor\includes\;$(ProjectDir)\src</AdditionalIncludeDirectories>
-      <TreatWarningAsError>true</TreatWarningAsError>
+      <TreatWarningAsError>false</TreatWarningAsError>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,7 +128,8 @@
       <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(ProjectDir)vendor\libraries\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)vendor\libraries\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib; glfw3.lib; glew32s.lib; </AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -157,7 +158,7 @@
     <ClCompile>
       <PrecompiledHeader>
       </PrecompiledHeader>
-      <WarningLevel>EnableAllWarnings</WarningLevel>
+      <WarningLevel>Level2</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
@@ -166,7 +167,7 @@
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <AdditionalIncludeDirectories>$(ProjectDir)vendor\includes\;$(ProjectDir)\src</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <TreatWarningAsError>true</TreatWarningAsError>
+      <TreatWarningAsError>false</TreatWarningAsError>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -177,17 +178,22 @@
       <AdditionalDependencies>opengl32.lib;glfw3.lib;glew32s.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
-      <AdditionalLibraryDirectories>$(ProjectDir)vendor\libraries\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)vendor\libraries\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib; glfw3.lib; glew32s.lib; </AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Graphics\Image.cpp" />
+    <ClCompile Include="src\Graphics\Constants.cpp" />
+    <ClCompile Include="src\Graphics\GFXPrimitives\Framebuffer.cpp" />
     <ClCompile Include="src\Application\GUI\GUILayer.cpp" />
     <ClCompile Include="src\Application\GUI\GUIParameter.cpp" />
     <ClCompile Include="src\Application\GUI\GUIParameterSet.cpp" />
     <ClCompile Include="src\Application\Layer\LayerStack.cpp" />
-    <ClCompile Include="src\GFXPrimitives\ShaderProgram.cpp" />
+    <ClCompile Include="src\Graphics\GFXPrimitives\ShaderProgram.cpp" />
     <ClCompile Include="src\Application\Application.cpp" />
-    <ClCompile Include="src\GFXPrimitives\VertexArray.cpp" />
+    <ClCompile Include="src\Graphics\GFXPrimitives\VertexArray.cpp" />
+    <ClCompile Include="src\Graphics\Types.cpp" />
     <ClCompile Include="src\imgui\imgui\imgui.cpp" />
     <ClCompile Include="src\imgui\imgui\imgui_demo.cpp" />
     <ClCompile Include="src\imgui\imgui\imgui_draw.cpp" />
@@ -204,27 +210,31 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="src\Application\Window\Window.cpp" />
-    <ClCompile Include="src\GFXPrimitives\VertexBuffer.cpp" />
+    <ClCompile Include="src\Graphics\GFXPrimitives\VertexBuffer.cpp" />
     <ClCompile Include="src\imgui\imgui_impl_glfw.cpp" />
     <ClCompile Include="src\imgui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="src\Graphics\GFXPrimitives\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\DLLHeader.h" />
+    <ClInclude Include="src\Graphics\Concepts.h" />
+    <ClInclude Include="src\Graphics\Image.h" />
+    <ClInclude Include="src\Graphics\Constants.h" />
+    <ClInclude Include="src\Graphics\GFXPrimitives\Framebuffer.h" />
     <ClInclude Include="src\Application\GUI\GUIParameter.h" />
     <ClInclude Include="src\Application\GUI\GUIParameterSet.h" />
     <ClInclude Include="src\Application\GUI\GUILayer.h" />
     <ClInclude Include="src\Application\Layer\LayerStack.h" />
     <ClInclude Include="src\Application\Layer\Layer.h" />
     <ClInclude Include="src\Application\Event\MouseEvent.h" />
-    <ClInclude Include="src\GFXPrimitives\GFXCommon.h" />
-    <ClInclude Include="src\GFXPrimitives\ShaderProgram.h" />
+    <ClInclude Include="src\Graphics\GFXPrimitives\ShaderProgram.h" />
     <ClInclude Include="src\Application\Event\Event.h" />
     <ClInclude Include="src\Application\Application.h" />
     <ClInclude Include="src\Application\Event\EventDefines.h" />
     <ClInclude Include="src\Application\Event\EventEnums.h" />
-    <ClInclude Include="src\Debug\GLDebug.h" />
-    <ClInclude Include="src\GFXPrimitives\VertexArray.h" />
-    <ClInclude Include="src\GFXPrimitives\VertexLayout.h" />
+    <ClInclude Include="src\Graphics\Debug\GLDebug.h" />
+    <ClInclude Include="src\Graphics\GFXPrimitives\VertexArray.h" />
+    <ClInclude Include="src\Graphics\GFXPrimitives\VertexLayout.h" />
+    <ClInclude Include="src\Graphics\Types.h" />
     <ClInclude Include="src\imgui\imgui\imconfig.h" />
     <ClInclude Include="src\imgui\imgui\imgui.h" />
     <ClInclude Include="src\imgui\imgui\imgui_internal.h" />
@@ -237,7 +247,8 @@
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\Application\Window\Window.h" />
     <ClInclude Include="src\Application\Event\WindowsEvent.h" />
-    <ClInclude Include="src\GFXPrimitives\VertexBuffer.h" />
+    <ClInclude Include="src\Graphics\GFXPrimitives\VertexBuffer.h" />
+    <ClInclude Include="src\Graphics\GFXPrimitives\Texture.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\shaders\fragment.glsl" />

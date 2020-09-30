@@ -1,6 +1,6 @@
 #pragma once
 #include <glew/glew.h>
-
+#include "Concepts.h"
 namespace GFX
 {
 	enum struct TextureWrapMode
@@ -55,9 +55,73 @@ namespace GFX
 		RGBA16F,
 	};
 
-	constexpr unsigned ApiWrapMode(TextureWrapMode mode);
-	constexpr unsigned ApiMinFilterMode(TextureMinFilterMode mode);
-	constexpr unsigned ApiMagFilterMode(TextureMagFilterMode mode);
-	constexpr unsigned ApiTextureInternalFormat(TextureInternalFormat format);
-	constexpr unsigned ApiPixelFormat(PixelFormat format);
+	unsigned ApiWrapMode(TextureWrapMode mode);
+	unsigned ApiMinFilterMode(TextureMinFilterMode mode);
+	unsigned ApiMagFilterMode(TextureMagFilterMode mode);
+	unsigned ApiTextureInternalFormat(TextureInternalFormat format);
+	unsigned ApiPixelFormat(PixelFormat format);
+	template <Fundamental F, size_t C>
+	TextureInternalFormat GetInternalFormat() { static_assert(false); }
+
+	template <>
+	inline TextureInternalFormat GetInternalFormat<unsigned char, 1>()
+	{
+		return TextureInternalFormat::R8;
+	}
+	template <>
+	inline TextureInternalFormat GetInternalFormat<unsigned char, 2>()
+	{
+		return TextureInternalFormat::RG8;
+	}
+	template <>
+	inline TextureInternalFormat GetInternalFormat<unsigned char, 3>()
+	{
+		return TextureInternalFormat::RGB8;
+	}
+	template <>
+	inline TextureInternalFormat GetInternalFormat<unsigned char, 4>()
+	{
+		return TextureInternalFormat::RGBA8;
+	}
+	template <>
+	inline TextureInternalFormat GetInternalFormat<unsigned short, 1>()
+	{
+		return TextureInternalFormat::R16;
+	}
+	template <>
+	inline TextureInternalFormat GetInternalFormat<unsigned short, 2>()
+	{
+		return TextureInternalFormat::RG16;
+	}
+	template <>
+	inline TextureInternalFormat GetInternalFormat<unsigned short, 3>()
+	{
+		return TextureInternalFormat::RGB16;
+	}
+	template <>
+	inline TextureInternalFormat GetInternalFormat<unsigned short, 4>()
+	{
+		return TextureInternalFormat::RGBA16;
+	}
+	template <>
+	inline TextureInternalFormat GetInternalFormat<float, 1>()
+	{
+		return TextureInternalFormat::R16F;
+	}
+	template <>
+	inline TextureInternalFormat GetInternalFormat<float, 2>()
+	{
+		return TextureInternalFormat::RG16F;
+	}
+	template <>
+	inline TextureInternalFormat GetInternalFormat<float, 3>()
+	{
+		return TextureInternalFormat::RGB16F;
+	}
+	template <>
+	inline TextureInternalFormat GetInternalFormat<float, 4>()
+	{
+		return TextureInternalFormat::RGBA16F;
+	}
 }
+

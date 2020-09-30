@@ -16,11 +16,10 @@
 
 
 //Project files
-#include "Debug/GLDebug.h"
-#include "GFXPrimitives/GFXCommon.h"
-#include "GFXPrimitives/VertexArray.h"
-#include "GFXPrimitives/VertexBuffer.h"
-#include "GFXPrimitives/ShaderProgram.h"
+#include "Graphics/Debug/GLDebug.h"
+#include "Graphics/GFXPrimitives/VertexArray.h"
+#include "Graphics/GFXPrimitives/VertexBuffer.h"
+#include "Graphics/GFXPrimitives/ShaderProgram.h"
 
 #include "Logger/Logger.h"
 

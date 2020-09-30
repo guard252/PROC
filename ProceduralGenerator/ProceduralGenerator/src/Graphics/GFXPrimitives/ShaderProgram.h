@@ -1,14 +1,13 @@
 #pragma once
 #include "pch.h"
 #include "Logger/Logger.h"
-#include "DLLHeader.h"
 #include <string>
 
 namespace GFX
 {
 	constexpr inline int INFOLOG_SIZE = 512;
 
-	class PROC_API Shader
+	class Shader
 	{
 	protected:
 		GLuint m_ID;
@@ -26,7 +25,7 @@ namespace GFX
 		virtual void CreateShader();
 	};
 	
-	class PROC_API VertexShader final : public Shader
+	class VertexShader final : public Shader
 	{
 		virtual void GenerateShaderID(std::string_view src) override;
 	public:
@@ -37,7 +36,7 @@ namespace GFX
 		}
 	};
 
-	class PROC_API FragmentShader final : public Shader
+	class FragmentShader final : public Shader
 	{
 		virtual void GenerateShaderID(std::string_view src) override;
 	public:
@@ -48,7 +47,7 @@ namespace GFX
 		}
 	};
 	
-	class PROC_API ComputeShader final : public Shader
+	class ComputeShader final : public Shader
 	{
 		virtual void GenerateShaderID(std::string_view src) override;
 		ComputeShader(std::string_view src) : Shader(src) {}
@@ -65,7 +64,7 @@ namespace GFX
 
 	// ShaderProgram allows you to define shader pipeline yourself
 	template <ShaderType ... S>
-	class ShaderProgram : public IBindable
+	class ShaderProgram
 	{
 	private:
 		GLuint m_renderer_ID;
@@ -95,14 +94,16 @@ namespace GFX
 			}
 		}
 
-		virtual void Bind() const override
+		virtual void Bind() const
 		{
 			GLCall(glUseProgram(m_renderer_ID));
 		}
-		virtual void UnBind() const override
+		virtual void UnBind() const
 		{
 			GLCall(glUseProgram(0));
 		}
+
+		GLuint GetID() { return m_renderer_ID; }
 
 		//Uniforms:
 	private:

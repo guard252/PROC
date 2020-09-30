@@ -25,7 +25,7 @@ namespace GFX
 			GLCall(glEnableVertexAttribArray(nextIndex));
 			GLCall(glVertexAttribPointer(nextIndex, els[i].count, els[i].type,
 				els[i].normalized, layout.GetStride(), (const void*)offset));
-			offset += els[i].count * els[i].GetTypeSize();
+			offset += els[i].count * els[i].type_size;
 			nextIndex++;
 		}
 	}

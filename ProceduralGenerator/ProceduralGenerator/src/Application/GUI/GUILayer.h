@@ -1,7 +1,6 @@
 #pragma once
 #include "Application/Layer/Layer.h"
-#include "DLLHeader.h"
-class PROC_API GUILayer : public Layer
+class GUILayer : public Layer
 {
 public:
 	GUILayer();

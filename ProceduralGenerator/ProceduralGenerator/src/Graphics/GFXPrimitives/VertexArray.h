@@ -3,14 +3,16 @@
 #include "VertexLayout.h"
 namespace GFX
 {
-	class PROC_API VertexArray : public IBindable
+	class VertexArray
 	{
 		GLuint m_renderer_ID;
 	public:
 		VertexArray();
 		~VertexArray();
-		virtual void Bind() const override { GLCall(glBindVertexArray(m_renderer_ID)); }
-		virtual void UnBind() const override { GLCall(glBindVertexArray(0)); }
+		virtual void Bind() const { glBindVertexArray(m_renderer_ID); }
+		virtual void UnBind() const { glBindVertexArray(0); }
 		void AddBuffer(const VertexBuffer& buffer, const VertexLayout& layout);
+
+		GLuint GetID() { return m_renderer_ID; }
 	};
 }

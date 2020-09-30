@@ -2,7 +2,7 @@
 
 namespace GFX
 {
-	constexpr unsigned ApiWrapMode(TextureWrapMode mode)
+	unsigned ApiWrapMode(TextureWrapMode mode)
 	{
 		switch (mode)
 		{
@@ -16,7 +16,7 @@ namespace GFX
 				return GL_MIRRORED_REPEAT;
 		}
 	}
-	constexpr unsigned ApiMinFilterMode(TextureMinFilterMode mode)
+	unsigned ApiMinFilterMode(TextureMinFilterMode mode)
 	{
 		switch(mode)
 		{
@@ -34,7 +34,7 @@ namespace GFX
 				return GL_NEAREST_MIPMAP_NEAREST;
 		}
 	}
-	constexpr unsigned ApiMagFilterMode(TextureMagFilterMode mode)
+	unsigned ApiMagFilterMode(TextureMagFilterMode mode)
 	{
 		switch (mode)
 		{
@@ -44,7 +44,7 @@ namespace GFX
 				return GL_NEAREST;
 		}
 	}
-	constexpr unsigned ApiTextureInternalFormat(TextureInternalFormat format)
+	unsigned ApiTextureInternalFormat(TextureInternalFormat format)
 	{
 		switch (format)
 		{
@@ -74,7 +74,7 @@ namespace GFX
 				return GL_RGBA16F;
 		}
 	}
-	constexpr unsigned ApiPixelFormat(PixelFormat format)
+	unsigned ApiPixelFormat(PixelFormat format)
 	{
 		switch (format)
 		{
@@ -96,4 +96,6 @@ namespace GFX
 				return GL_STENCIL_INDEX;
 		}
 	}
+
+	
 }
