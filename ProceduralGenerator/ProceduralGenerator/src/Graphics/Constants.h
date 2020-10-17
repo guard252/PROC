@@ -55,11 +55,30 @@ namespace GFX
 		RGBA16F,
 	};
 
-	unsigned ApiWrapMode(TextureWrapMode mode);
-	unsigned ApiMinFilterMode(TextureMinFilterMode mode);
-	unsigned ApiMagFilterMode(TextureMagFilterMode mode);
-	unsigned ApiTextureInternalFormat(TextureInternalFormat format);
-	unsigned ApiPixelFormat(PixelFormat format);
+	enum struct ShaderDataType
+	{
+		Bool,
+		Int,
+		Int2,
+		Int3,
+		Int4,
+		Float,
+		Float2,
+		Float3,
+		Float4,
+		Mat2,
+		Mat3,
+		Mat4,
+	};
+
+	GLuint ApiWrapMode(TextureWrapMode mode);
+	GLuint ApiMinFilterMode(TextureMinFilterMode mode);
+	GLuint ApiMagFilterMode(TextureMagFilterMode mode);
+	GLuint ApiTextureInternalFormat(TextureInternalFormat format);
+	GLuint ApiPixelFormat(PixelFormat format);
+	GLuint ShaderDataTypeSize(ShaderDataType type);
+	GLuint ShaderDataTypeElementCount(ShaderDataType type);
+	GLuint ApiShaderDataType(ShaderDataType type);
 	template <Fundamental F, size_t C>
 	TextureInternalFormat GetInternalFormat() { static_assert(false); }
 

@@ -210,7 +210,7 @@
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="src\Application\Window\Window.cpp" />
-    <ClCompile Include="src\Graphics\GFXPrimitives\VertexBuffer.cpp" />
+    <ClCompile Include="src\Graphics\GFXPrimitives\Buffer.cpp" />
     <ClCompile Include="src\imgui\imgui_impl_glfw.cpp" />
     <ClCompile Include="src\imgui\imgui_impl_opengl3.cpp" />
     <ClCompile Include="src\Graphics\GFXPrimitives\Texture.cpp" />
@@ -247,7 +247,7 @@
     <ClInclude Include="src\pch.h" />
     <ClInclude Include="src\Application\Window\Window.h" />
     <ClInclude Include="src\Application\Event\WindowsEvent.h" />
-    <ClInclude Include="src\Graphics\GFXPrimitives\VertexBuffer.h" />
+    <ClInclude Include="src\Graphics\GFXPrimitives\Buffer.h" />
     <ClInclude Include="src\Graphics\GFXPrimitives\Texture.h" />
   </ItemGroup>
   <ItemGroup>

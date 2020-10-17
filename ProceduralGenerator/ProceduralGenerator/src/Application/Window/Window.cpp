@@ -30,6 +30,8 @@ void Window::Init()
 		glfwTerminate();
 		LOGE("Unable to init GLEW");
 	}
+
+	EnableDebugOutput();
 }
 
 void Window::Shutdown()
